@@ -3,5 +3,5 @@ npm install
 npm test
 npm run build
 docker build -t jennykibiri/freestyle-jenkins-node-app .
-docker login -u $USERNAME -p $password
+docker login -u $USERNAME -p $PASSWORD
 docker push jennykibiri/freestyle-jenkins-node-app
