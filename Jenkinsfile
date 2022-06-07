@@ -32,7 +32,12 @@ pipeline {
         }
         stage ('Deploy') {
             steps {
-                echo 'Deploying....'
+                script {
+                    def dockerCmd = 'docker run  -p 3000:300 -d jennykibiri/freestyle-jenkins-node-app:latest'
+                    sshagent(['ec2-server-key']) {
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.92.144.96 ${dockerCmd}"
+                    }
+                }
             }
         }
     }
