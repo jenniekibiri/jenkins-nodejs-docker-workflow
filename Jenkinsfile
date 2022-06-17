@@ -33,12 +33,15 @@ pipeline {
         stage ('Deploy') {
             steps {
                 script {
-                    def dockerCmd = 'docker run  -p 3000:3000 -d jennykibiri/freestyle-jenkins-node-app:latest'
-                    sshagent(['ec2-server-key']) {
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.92.144.96 ${dockerCmd}"
+                    def dockerCmd = 'docker-compose -f docker-compose.yaml up -d'
+                    sshagent(['ec2-server2']) {
+                        sh 'scp docker-compose.yaml  ec2-user@54.152.2.92:/home/ec2-user'
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.152.2.92 ${dockerCmd}"
                     }
                 }
             }
         }
     }
 }
+
+

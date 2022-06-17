@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+    nest-js-app:
+      image: jennykibiri/freestyle-jenkins-node-app
+      ports:
+        - 3001:3000
+    postgres:
+      image: postgres:13
+      ports:
+        - 5432:5432
+      environment:
+        - POSTGRES_PASSWORD=my-pwd
