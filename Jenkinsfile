@@ -35,7 +35,7 @@ pipeline {
                 script {
                     def dockerCmd = 'docker run  -p 3000:3000 -d jennykibiri/freestyle-jenkins-node-app:latest'
                     sshagent(['ec2-server2']) {
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.152.2.9 ${dockerCmd}"
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@ 54.152.2.92 ${dockerCmd}"
                     }
                 }
             }
